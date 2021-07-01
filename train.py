@@ -5,6 +5,7 @@ import json
 import datetime
 import numpy as np
 import skimage.draw
+import imgaug
 
 from mrcnn.config import Config
 from mrcnn import model as modellib, utils
@@ -197,11 +198,22 @@ def train(model):
     # Since we're using a very small dataset, and starting from
     # COCO trained weights, we don't need to train too long. Also,
     # no need to train all layers, just the heads should do it.
+
+    augmentation = imgaug.augmenters.Sometimes(0.5, [
+                                imgaug.augmenters.Fliplr(0.5),
+                                imgaug.augmenters.GaussianBlur(sigma=(0.0, 5.0)),
+                                imgaug.augmenters.Add((-10, 10), per_channel=0.5),
+                                imgaug.augmenters.Multiply((0.5, 1.5), per_channel=0.5),
+                                imgaug.augmenters.LinearContrast((0.5, 2.0), per_channel=0.5),
+                                imgaug.augmenters.JpegCompression(compression=(70, 99))
+                            ])
+
     print("Training network heads...")
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
                 epochs=30,
-                layers='heads')
+                layers='heads',
+                augmentation=augmentation)
 
 ############################################################
 #  Training
