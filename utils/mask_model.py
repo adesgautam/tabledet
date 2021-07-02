@@ -73,7 +73,7 @@ def get_ax(rows=1, cols=1, size=16):
 
 # Directory to save logs and trained model
 MODEL_DIR = 'logs'
-custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0003_ft.h5"  # TODO: update this path
+custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0008_mr.h5"  # TODO: update this path
 
 global graph
 graph = tf.get_default_graph() 
