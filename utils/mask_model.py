@@ -50,6 +50,11 @@ class BalloonConfig(Config):
     IMAGES_PER_GPU = 1
     NUM_CLASSES = 1 + 2  # Background + class1
 
+    BACKBONE = "resnet50"
+    IMAGE_RESIZE_MODE = "square"
+    IMAGE_MIN_DIM = 512
+    IMAGE_MAX_DIM = 512
+
     # Number of training steps per epoch
     STEPS_PER_EPOCH = 100
 
@@ -68,7 +73,7 @@ def get_ax(rows=1, cols=1, size=16):
 
 # Directory to save logs and trained model
 MODEL_DIR = 'logs'
-custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0005.h5"  # TODO: update this path
+custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0003_ft.h5"  # TODO: update this path
 
 global graph
 graph = tf.get_default_graph() 
@@ -104,9 +109,14 @@ def model_predict(image_path):
         results = model.detect([image], verbose=1)
     ax = get_ax(1)
     r = results[0]
-    masked_image = visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
-                            dataset['class_names'], r['scores'], ax=ax,
-                            title="Predictions")
+    # masked_image = visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
+    #                         dataset['class_names'], r['scores'], ax=ax,
+    #                         title="Predictions")
+
+    masked_image = visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], dataset['class_names'],
+                                      scores=None, title="",
+                                      figsize=(16, 16), ax=None,
+                                      show_mask=True, show_bbox=True)
     return masked_image
 
 
