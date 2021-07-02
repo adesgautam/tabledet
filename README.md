@@ -1,11 +1,18 @@
-# Simplified Matterport's version of Mask RCNN
+# Used Matterport's version of Mask RCNN
 
 ### The original implementation of Matterport is [here](https://github.com/matterport/Mask_RCNN)
 
-This is just a simplified version of Matterport's version with some little bells and whistles.
+Using Mask-RCNN train your own Table Structure Recognition model
+
+It also has a super-resolution model to enhance the image quality before sending to OCR.
+Reference is from [here](https://github.com/amanshenoy/image-super-resolution)
+
+For OCR Google's Tesseract is used here.
+
+The datasets are provided under `dataset_custom` and `dataset_marmot`
 
 Additions:
 * A Flask based UI for easy testing of the trained model.
-* Conversion of dataset from CSV to JSON exported from the VIA tool(used for annotation). This is useful if you want to distribute the annotation for multiple people and then compile all the annotations into JSON and split it for train and val.
+* To test the model use `extract_tables.ipynb`
 
-### Download the pretrained weights from [here](https://github.com/matterport/Mask_RCNN/releases/download/v2.1/mask_rcnn_balloon.h5)
+### The pretrained weights are in the `models` directory
