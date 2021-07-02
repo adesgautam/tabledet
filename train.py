@@ -34,9 +34,9 @@ class MyDatasetConfig(Config):
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
 
-    IMAGE_RESIZE_MODE = "square"
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
+    # IMAGE_RESIZE_MODE = "square"
+    # IMAGE_MIN_DIM = 512
+    # IMAGE_MAX_DIM = 512
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 2  # Background + table + column

@@ -84,7 +84,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
                       scores=None, title="",
                       figsize=(16, 16), ax=None,
                       show_mask=True, show_bbox=True,
-                      colors=None, captions=None, save_path=''):
+                      colors=None, captions=None):
     """
     boxes: [num_instance, (y1, x1, y2, x2, class_id)] in image coordinates.
     masks: [height, width, num_instances]
@@ -140,12 +140,11 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             class_id = class_ids[i]
             score = scores[i] if scores is not None else None
             label = class_names[class_id]
-            # caption = "{} {:.3f}".format(label, score) if score else label
-            caption = "{}".format(label)
+            caption = "{} {:.3f}".format(label, score) if score else label
         else:
             caption = captions[i]
         ax.text(x1, y1 + 8, caption,
-                color='b', size=7, backgroundcolor="none")
+                color='red', size=11, backgroundcolor="none")
 
         # Mask
         mask = masks[:, :, i]
@@ -163,10 +162,10 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             verts = np.fliplr(verts) - 1
             p = Polygon(verts, facecolor="none", edgecolor=color)
             ax.add_patch(p)
-    # ax.imshow(masked_image.astype(np.uint8))
-    # if auto_show:
-    #     plt.show()
-    plt.savefig('test.jpg', dpi=300)
+    ax.imshow(masked_image.astype(np.uint8))
+    if auto_show:
+        plt.show()
+
     return masked_image.astype(np.uint8)
 
 

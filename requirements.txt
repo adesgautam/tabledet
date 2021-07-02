@@ -4,9 +4,12 @@ Pillow
 cython
 matplotlib
 scikit-image
-tensorflow>=1.3.0
-keras>=2.0.8
 opencv-python
-h5py
-imgaug
 IPython[all]
+h5py==2.10.0
+tensorflow==1.14
+tensorflow-gpu==1.14.0
+keras==2.1.0
+imgaug
+torch==1.4.0
+torchvision==0.5.0

@@ -50,16 +50,6 @@ class BalloonConfig(Config):
     IMAGES_PER_GPU = 1
     NUM_CLASSES = 1 + 2  # Background + class1
 
-    BACKBONE = "resnet50"
-    IMAGE_RESIZE_MODE = "square"
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
-
-    # Number of training steps per epoch
-    STEPS_PER_EPOCH = 100
-
-    # Skip detections with < 90% confidence
-    DETECTION_MIN_CONFIDENCE = 0.9
 
 def get_ax(rows=1, cols=1, size=16):
     """Return a Matplotlib Axes array to be used in
@@ -73,7 +63,7 @@ def get_ax(rows=1, cols=1, size=16):
 
 # Directory to save logs and trained model
 MODEL_DIR = 'logs'
-custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0008_mr.h5"  # TODO: update this path
+custom_WEIGHTS_PATH = "models/mask_rcnn_tabledataset_0024_large.h5"  # TODO: update this path
 
 global graph
 graph = tf.get_default_graph() 
