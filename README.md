@@ -1,8 +1,7 @@
-# Used Matterport's version of Mask RCNN
+
+# Train your own Table Structure Recognition model using Mask-RCNN 
 
 ### The original implementation of Matterport is [here](https://github.com/matterport/Mask_RCNN)
-
-Using Mask-RCNN train your own Table Structure Recognition model
 
 It also has a super-resolution model to enhance the image quality before sending to OCR.
 Reference is from [here](https://github.com/amanshenoy/image-super-resolution)
