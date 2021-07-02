@@ -15,4 +15,4 @@ Additions:
 * A Flask based UI for easy testing of the trained model.
 * To test the model use `extract_tables.ipynb`
 
-### The pretrained weights are in the `models` directory
+### The pretrained weights are [here](https://drive.google.com/file/d/1A75braLW3SrweJzXWl0BAJePdM4BEY4s/view?usp=sharing). Put it in the `models` directory
